@@ -1,0 +1,33 @@
+{
+  "name": "countdown",
+  "version": "0.0.1",
+  "description": "google chrom plugin for you to countdown you special days",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logicsolutions-jimmy-fang/countdown.git"
+  },
+  "author": "Jimmy Fang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/logicsolutions-jimmy-fang/countdown/issues"
+  },
+  "homepage": "https://github.com/logicsolutions-jimmy-fang/countdown#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-load-plugins": "^2.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-order": "^1.2.0",
+    "gulp-sass": "^4.0.2",
+    "main-bower-files": "^2.13.3",
+    "natives": "^1.1.6"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}

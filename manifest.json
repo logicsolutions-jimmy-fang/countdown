@@ -1,5 +1,5 @@
 {
-  "name": "倒數計時器",
+  "name": "CountDown",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "倒數屬於你重要的日子",
@@ -11,7 +11,7 @@
   },
   "browser_action": {
     "default_icon": "icons/icon16.png",
-    "default_title": "倒數計時器",
+    "default_title": "CountDown",
     "default_popup": "src/browser_action/browser_action.html"
   },
   "options_page":"src/option/option.html",

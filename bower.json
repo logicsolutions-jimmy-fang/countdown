@@ -1,0 +1,39 @@
+{
+  "name": "countdown",
+  "description": "google chrom plugin for you to countdown you special days",
+  "main": "gulpfile.js",
+  "authors": [
+    "Jimmy Fang"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/logicsolutions-jimmy-fang/countdown",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^5.11.2",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css",
+        "fonts/fontawesome-webfont.*"
+      ]
+    },
+    "jquery": {
+      "main": "dist/jquery.js"
+    }
+  }
+}

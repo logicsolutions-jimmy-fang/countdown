@@ -2,6 +2,8 @@
 
 - Currently: dev version/continue dev
 
+- add gulp into develop
+
 - todo list
   - [x] beautify option page and popup page
   - [x] let countdown date can mark its name ex.Christmas...etc
@@ -13,3 +15,4 @@
   - [ ] deploy to chrome app store
   - [ ] delete 1 countdown date
   - [ ] add every year loop feature
+  - [ ] i18n feature
