@@ -29,7 +29,7 @@
     "font-awesome": {
       "main": [
         "css/font-awesome.css",
-        "fonts/fontawesome-webfont.*"
+        "webfonts/*"
       ]
     },
     "jquery": {

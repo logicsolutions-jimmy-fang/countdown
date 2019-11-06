@@ -3,3 +3,33 @@ $colorRed: #ff0000;
 .home {
     color: $colorRed;
 }
+
+body {
+    min-width: 20em;
+}
+
+#title{
+    margin-top: 10px;
+}
+
+#countdown {
+    text-align: center;
+}
+
+#countdown .info{
+    text-align: center;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    color:white;
+    background-color: #4CAF50;
+    border-radius:10px;
+}
+
+#footer {
+    display: flex;
+    width:100%;
+    flex-direction: row;
+    justify-content:space-around;
+}

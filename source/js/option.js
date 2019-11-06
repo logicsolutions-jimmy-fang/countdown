@@ -10,7 +10,7 @@ dateform =`
         <input type="date" class="form-control countDownDate" placeholder="欲倒數的日子" required>
     </div>
 `;
-resetDom = document.getElementById('reset')
+resetDom = document.getElementById('reset');
 
 
 chrome.storage.sync.get('countDownConfig',function(result){
@@ -77,4 +77,4 @@ resetDom.addEventListener("click",function(){
             window.location.reload()
         });
     });
-})
+});

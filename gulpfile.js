@@ -1,6 +1,6 @@
-var gulp= require('gulp');
 var $ = require('gulp-load-plugins')();
 var minifyCSS = require('gulp-minify-css');
+let uglify = require('gulp-uglify-es').default;
 var browserSync = require('browser-sync').create();
 var mainBowerFiles=require('main-bower-files')
 const { task, src, dest, series } = require('gulp')
@@ -34,10 +34,10 @@ task('bower', function() {
 });
 
 task('vendorCSS',function(){    
-    return src(['./.tmp/vendors/**/*.css','./.tmp/css/**/*.css'])
+    return src(['./.tmp/vendors/**/*.css','./.tmp/**/*.css'])
     .pipe($.concat('all.css'))
     .pipe(minifyCSS())                            
-    .pipe(dest('./src'))
+    .pipe(dest('./src/assets/css'))
     .pipe(browserSync.stream())    
 });
 
@@ -46,73 +46,28 @@ task('clean',function(){
         .pipe($.clean())
 });
 
-// gulp.task('browser-sync',function(){
-//     browserSync.init({
-//         server:{
-//             baseDir:"./public"
-//         }
-//     })
-// })
+task('vendorJs',function(){
+    return src(['./.tmp/vendors/**/*.js','./source/js/**/*.js'])
+    .pipe($.order([
+        'jquery.js',
+        'bootstrap.js',
+    ]))
+    .pipe($.concat('all.js'))
+    .pipe(uglify({
+        compress:{
+            drop_console:true //把console.log 削掉
+        }
+    }))                               
+    .pipe(dest('./src/assets/js'))
+    .pipe(browserSync.stream())
+});
 
-
-
-// gulp.task('deploy', function () {
-//     return gulp.src('./public/**/*')
-//         .pipe($.ghPages());        
-// });
-
-
-// //然後做出合併
-// gulp.task('vendorJs',['bower'],function(){
-//     return gulp.src(['./.tmp/vendors/**/*.js','./source/js/**/*.js'])
-//     .pipe($.order([
-//         'jquery.js',
-//         'tether.js',
-//         'bootstrap.js',
-//         'wow.js',
-//         'particles.min.js'
-//     ]))
-//     .pipe($.concat('all.js'))
-//     .pipe($.uglify({
-//         compress:{
-//             drop_console:true //把console.log 削掉
-//         }
-//     }))                               
-//     .pipe(gulp.dest('./public/js'))
-//     .pipe(browserSync.stream())
-// });
-
-// gulp.task('vendorCSS',['bower'],function(){    
-//     return gulp.src(['./.tmp/vendors/**/*.css','./.tmp/css/**/*.css'])
-//     .pipe($.concat('all.css'))
-//     .pipe(minifyCSS())                            
-//     .pipe(gulp.dest('./public/css'))
-//     .pipe(browserSync.stream())    
-// });
-
-// gulp.task('vendorFONT',['bower'],function(){
-//     return gulp.src("./.tmp/vendors/fontawesome-webfont.*")
-//                 .pipe(gulp.dest('./public/fonts'))
-// });
-
-// //刪除資料夾
-// gulp.task('clean',function(){
-//     return gulp.src(['./.tmp','./public','./.publish'],{read:false})
-//         .pipe($.clean())
-// });
-
-// gulp.task('cleantmp',['vendorJs','vendorCSS','vendorFONT','scss'],function(){
-//     return gulp.src(['./.tmp'],{read:false})
-//         .pipe($.clean())
-//         .pipe(browserSync.stream())
-// });
-
-// gulp.task('watch', function () {
-//     gulp.watch('./source/**/*.jade',['jade']);
-//     gulp.watch('./source/resume/*.json', ['jade']);
-//     gulp.watch('./source/**/*.scss', ['scss']);
-// });
+task('vendorFONT',function(){
+    return      src('./.tmp/vendors/*.{eot,svg,ttf,woff,woff2}')
+                .pipe(dest('./src/assets/fonts'))
+});
 
 //gulp.task('dev', ['jade','scss','vendorJs','vendorCSS','vendorFONT','cleantmp','watch','browser-sync']);
 
 //gulp.task('default', ['jade','scss','vendorJs','vendorCSS','vendorFONT','cleantmp']);
+exports.default = series('bower','scss','vendorCSS','vendorJs','vendorFONT','clean');
