@@ -2,7 +2,11 @@
 
 - Currently: dev version/continue dev
 
-- add gulp into develop
+- add gulp into develop [x]
+    - npm install
+    - bower install
+    - gulp
+
 
 - todo list
   - [x] beautify option page and popup page
